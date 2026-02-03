@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gleichungs-Trainer Pro | Stöchiometrie-Meister</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        sub { font-size: 0.7em; vertical-align: sub; line-height: 0; }
+        .lab-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col items-center justify-center p-4">
+
+    <div class="lab-card w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden">
+        
+        <div class="bg-slate-900 p-6 text-white flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold tracking-tight">🧪 GLEICHUNGS-TRAINER <span class="text-emerald-400">PRO</span></h1>
+                <p class="text-xs text-slate-400 uppercase tracking-widest mt-1">Stöchiometrie-Modul Edition 2026</p>
+            </div>
+            <div id="difficulty-badge" class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                LÄDT...
+            </div>
+        </div>
+
+        <div class="p-8 md:p-12">
+            <div class="text-center mb-8">
+                <h2 id="reaction-name" class="text-2xl md:text-3xl font-bold text-slate-800 mb-2 italic">---</h2>
+                <div class="h-1 w-20 bg-emerald-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div id="equation-container" class="flex flex-wrap justify-center items-center gap-4 py-12 px-4 bg-slate-50 rounded-2xl border border-slate-100 mb-8 min-h-[160px] text-2xl md:text-3xl font-medium transition-all">
+                </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button onclick="checkAnswer()" class="group relative flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl transition-all shadow-lg active:scale-95">
+                    <span>LÖSUNG PRÜFEN</span>
+                </button>
+                <button onclick="loadRandom()" class="flex items-center justify-center gap-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-4 rounded-xl transition-all active:scale-95">
+                    <span>NÄCHSTE AUFGABE</span>
+                </button>
+            </div>
+
+            <div id="feedback" class="mt-8 text-center font-semibold text-lg h-8 transition-all duration-300"></div>
+        </div>
+
+        <div class="bg-slate-50 border-t border-slate-200 p-4 text-center">
+            <p class="text-[10px] text-slate-400 uppercase tracking-widest font-medium">
+                Erstellt von Mag. Erich K. Kerzendorfer mit Hilfe von Gemini 3 pro
+            </p>
+        </div>
+    </div>
+
+<script>
+    let equations = [];
+    let currentTask = null;
+
+    // Initialization
+    async function init() {
+        try {
+            const response = await fetch('equations.json');
+            const data = await response.json();
+            // Filter nur selektierte Aufgaben
+            equations = data.filter(eq => eq.selected === true);
+            if(equations.length > 0) {
+                loadRandom();
+            } else {
+                document.getElementById('reaction-name').innerText = "Keine Daten ausgewählt";
+            }
+        } catch (error) {
+            console.error("Datenfehler:", error);
+            document.getElementById('reaction-name').innerText = "Fehler beim Laden der JSON";
+        }
+    }
+
+    // Formatiert chemische Formeln (H2O -> H₂O)
+    function format(formula) {
+        return formula.replace(/(\d+)/g, '<sub>$1</sub>');
+    }
+
+    // Lädt eine neue zufällige Gleichung
+    function loadRandom() {
+        const idx = Math.floor(Math.random() * equations.length);
+        currentTask = equations[idx];
+
+        // UI Reset
+        document.getElementById('feedback').innerText = "";
+        const badge = document.getElementById('difficulty-badge');
+        badge.innerText = currentTask.difficulty;
+        badge.className = currentTask.difficulty === 'SEK2' 
+            ? "px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter bg-amber-500/20 text-amber-600 border border-amber-500/30"
+            : "px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter bg-emerald-500/20 text-emerald-600 border border-emerald-500/30";
+
+        document.getElementById('reaction-name').innerText = currentTask.name || "Chemische Reaktion";
+
+        const container = document.getElementById('equation-container');
+        const parts = currentTask.equation.split(/ \+ | -> /);
+        const operators = currentTask.equation.match(/ \+ | -> /g);
+        
+        let html = "";
+        parts.forEach((p, i) => {
+            html += `<div class="flex items-center gap-2">
+                        <input type="number" 
+                               class="coeff-input w-14 h-14 text-center border-2 border-slate-200 rounded-xl focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all font-bold text-emerald-700" 
+                               data-idx="${i}" 
+                               placeholder="?">
+                        <span class="font-semibold text-slate-700">${format(p)}</span>
+                     </div>`;
+            if (operators && operators[i]) {
+                const op = operators[i].trim();
+                html += `<span class="mx-2 font-light text-slate-300 text-4xl">${op === '->' ? '→' : '+'}</span>`;
+            }
+        });
+        container.innerHTML = html;
+    }
+
+    // Validierung der Eingabe
+    function checkAnswer() {
+        const inputs = document.querySelectorAll('.coeff-input');
+        let isCorrect = true;
+
+        inputs.forEach((input, i) => {
+            const userVal = parseInt(input.value);
+            const correctVal = currentTask.solution[i];
+
+            if (userVal === correctVal) {
+                input.classList.remove('border-rose-400', 'bg-rose-50');
+                input.classList.add('border-emerald-500', 'bg-emerald-50');
+            } else {
+                input.classList.remove('border-emerald-500', 'bg-emerald-50');
+                input.classList.add('border-rose-400', 'bg-rose-50');
+                isCorrect = false;
+            }
+        });
+
+        const feedback = document.getElementById('feedback');
+        if (isCorrect) {
+            feedback.innerText = "✨ HERVORRAGEND! DIE GLEICHUNG IST AUSGEGLICHEN.";
+            feedback.className = "mt-8 text-center font-bold text-emerald-600 animate-bounce";
+        } else {
+            feedback.innerText = "DIE MASSENBILANZ STIMMT NOCH NICHT...";
+            feedback.className = "mt-8 text-center font-bold text-rose-500";
+        }
+    }
+
+    init();
+</script>
+</body>
+</html>
