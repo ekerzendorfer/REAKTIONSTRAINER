@@ -10,45 +10,62 @@
         body { font-family: 'Inter', sans-serif; }
         sub { font-size: 0.7em; vertical-align: sub; line-height: 0; }
         .lab-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(226, 232, 240, 1);
         }
+        /* Verhindert Umbruch bei bis zu 4 Stoffen auf Desktops */
+        .equation-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        @media (min-width: 1024px) {
+            .eq-wrap-threshold { flex-wrap: nowrap; }
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col items-center justify-center p-4">
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col items-center justify-center p-2 md:p-4">
 
-    <div class="lab-card w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden">
+    <div class="lab-card w-full max-w-4xl rounded-3xl shadow-2xl overflow-hidden">
         
-        <div class="bg-slate-900 p-6 text-white flex justify-between items-center">
+        <div class="bg-slate-900 p-4 md:p-6 text-white flex flex-col md:flex-row justify-between items-center gap-4">
             <div>
                 <h1 class="text-xl font-bold tracking-tight">🧪 GLEICHUNGS-TRAINER <span class="text-emerald-400">PRO</span></h1>
-                <p class="text-xs text-slate-400 uppercase tracking-widest mt-1">Stöchiometrie-Modul Edition 2026</p>
+                <p id="score-display" class="text-xs text-emerald-400 font-mono mt-1 uppercase tracking-widest">Score: 0 / 0 (0%)</p>
             </div>
-            <div id="difficulty-badge" class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                LÄDT...
+            
+            <div class="flex bg-slate-800 p-1 rounded-xl border border-slate-700">
+                <button onclick="setFilter('SEK1')" id="btn-SEK1" class="px-4 py-1.5 rounded-lg text-xs font-bold transition-all">SEK 1</button>
+                <button onclick="setFilter('SEK2')" id="btn-SEK2" class="px-4 py-1.5 rounded-lg text-xs font-bold transition-all">SEK 2</button>
+                <button onclick="setFilter('ALLE')" id="btn-ALLE" class="px-4 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-600">ALLE</button>
             </div>
         </div>
 
-        <div class="p-8 md:p-12">
-            <div class="text-center mb-8">
-                <h2 id="reaction-name" class="text-2xl md:text-3xl font-bold text-slate-800 mb-2 italic">---</h2>
-                <div class="h-1 w-20 bg-emerald-500 mx-auto rounded-full"></div>
+        <div class="p-6 md:p-10">
+            <div class="text-center mb-6">
+                <h2 id="reaction-name" class="text-xl md:text-2xl font-bold text-slate-800 mb-2">---</h2>
+                <div class="h-1 w-16 bg-emerald-500 mx-auto rounded-full"></div>
             </div>
 
-            <div id="equation-container" class="flex flex-wrap justify-center items-center gap-4 py-12 px-4 bg-slate-50 rounded-2xl border border-slate-100 mb-8 min-h-[160px] text-2xl md:text-3xl font-medium transition-all">
+            <div id="equation-container" class="equation-row py-10 px-2 bg-slate-50 rounded-2xl border border-slate-100 mb-6 min-h-[140px] text-lg md:text-2xl font-medium transition-all">
+                </div>
+
+            <div id="compact-result" class="h-12 text-center text-slate-500 font-medium text-lg md:text-xl mb-6 transition-all duration-500 opacity-0 italic">
                 </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <button onclick="checkAnswer()" class="group relative flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl transition-all shadow-lg active:scale-95">
-                    <span>LÖSUNG PRÜFEN</span>
+                <button onclick="checkAnswer()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl transition-all shadow-lg active:scale-95">
+                    LÖSUNG PRÜFEN
                 </button>
-                <button onclick="loadRandom()" class="flex items-center justify-center gap-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-4 rounded-xl transition-all active:scale-95">
-                    <span>NÄCHSTE AUFGABE</span>
+                <button onclick="loadRandom()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-4 rounded-xl transition-all active:scale-95">
+                    NÄCHSTE AUFGABE
                 </button>
             </div>
 
-            <div id="feedback" class="mt-8 text-center font-semibold text-lg h-8 transition-all duration-300"></div>
+            <div id="feedback" class="mt-6 text-center font-bold text-lg h-8 transition-all"></div>
         </div>
 
         <div class="bg-slate-50 border-t border-slate-200 p-4 text-center">
@@ -59,82 +76,90 @@
     </div>
 
 <script>
-    let equations = [];
+    let allEquations = [];
+    let filteredEquations = [];
     let currentTask = null;
+    let currentFilter = 'ALLE';
+    
+    // Scoring
+    let solvedCorrectly = 0;
+    let totalTasks = 0;
+    let firstTry = true;
 
-    // Initialization
     async function init() {
         try {
             const response = await fetch('equations.json');
-            const data = await response.json();
-            // Filter nur selektierte Aufgaben
-            equations = data.filter(eq => eq.selected === true);
-            if(equations.length > 0) {
-                loadRandom();
-            } else {
-                document.getElementById('reaction-name').innerText = "Keine Daten ausgewählt";
-            }
+            allEquations = await response.json();
+            setFilter('ALLE');
         } catch (error) {
-            console.error("Datenfehler:", error);
-            document.getElementById('reaction-name').innerText = "Fehler beim Laden der JSON";
+            document.getElementById('reaction-name').innerText = "JSON-Datei nicht gefunden!";
         }
     }
 
-    // Formatiert chemische Formeln (H2O -> H₂O)
-    function format(formula) {
-        return formula.replace(/(\d+)/g, '<sub>$1</sub>');
+    function setFilter(filter) {
+        currentFilter = filter;
+        ['SEK1', 'SEK2', 'ALLE'].forEach(f => {
+            const btn = document.getElementById('btn-' + f);
+            btn.classList.toggle('bg-slate-600', f === filter);
+            btn.classList.toggle('text-white', f === filter);
+        });
+
+        filteredEquations = allEquations.filter(eq => 
+            eq.selected && (filter === 'ALLE' || eq.difficulty === filter)
+        );
+        loadRandom();
     }
 
-    // Lädt eine neue zufällige Gleichung
+    function format(text, hideOne = false) {
+        if (!text) return "";
+        let formatted = text.replace(/(\d+)/g, '<sub>$1</sub>');
+        return formatted;
+    }
+
     function loadRandom() {
-        const idx = Math.floor(Math.random() * equations.length);
-        currentTask = equations[idx];
-
-        // UI Reset
+        if (filteredEquations.length === 0) return;
+        
+        currentTask = filteredEquations[Math.floor(Math.random() * filteredEquations.length)];
+        firstTry = true;
+        
         document.getElementById('feedback').innerText = "";
-        const badge = document.getElementById('difficulty-badge');
-        badge.innerText = currentTask.difficulty;
-        badge.className = currentTask.difficulty === 'SEK2' 
-            ? "px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter bg-amber-500/20 text-amber-600 border border-amber-500/30"
-            : "px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter bg-emerald-500/20 text-emerald-600 border border-emerald-500/30";
-
+        document.getElementById('compact-result').classList.add('opacity-0');
         document.getElementById('reaction-name').innerText = currentTask.name || "Chemische Reaktion";
 
         const container = document.getElementById('equation-container');
         const parts = currentTask.equation.split(/ \+ | -> /);
         const operators = currentTask.equation.match(/ \+ | -> /g);
         
+        // Layout-Klasse für Zeilenumbruch-Steuerung
+        container.className = "equation-row py-10 px-2 bg-slate-50 rounded-2xl border border-slate-100 mb-6 min-h-[140px] text-lg md:text-2xl font-medium";
+        if (parts.length <= 4) container.classList.add('eq-wrap-threshold');
+
         let html = "";
         parts.forEach((p, i) => {
-            html += `<div class="flex items-center gap-2">
-                        <input type="number" 
-                               class="coeff-input w-14 h-14 text-center border-2 border-slate-200 rounded-xl focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all font-bold text-emerald-700" 
-                               data-idx="${i}" 
-                               placeholder="?">
+            html += `<div class="flex items-center gap-1">
+                        <input type="number" min="1" 
+                               class="coeff-input w-12 h-12 md:w-14 md:h-14 text-center border-2 border-slate-200 rounded-xl focus:border-emerald-500 outline-none transition-all font-bold text-emerald-700" 
+                               data-idx="${i}" placeholder="?">
                         <span class="font-semibold text-slate-700">${format(p)}</span>
                      </div>`;
             if (operators && operators[i]) {
-                const op = operators[i].trim();
-                html += `<span class="mx-2 font-light text-slate-300 text-4xl">${op === '->' ? '→' : '+'}</span>`;
+                const op = operators[i].trim() === '->' ? '→' : '+';
+                html += `<span class="mx-1 text-slate-300 font-light">${op}</span>`;
             }
         });
         container.innerHTML = html;
     }
 
-    // Validierung der Eingabe
     function checkAnswer() {
         const inputs = document.querySelectorAll('.coeff-input');
         let isCorrect = true;
 
         inputs.forEach((input, i) => {
-            const userVal = parseInt(input.value);
-            const correctVal = currentTask.solution[i];
-
-            if (userVal === correctVal) {
+            const val = parseInt(input.value);
+            if (val === currentTask.solution[i]) {
+                input.classList.replace('border-slate-200', 'border-emerald-500');
                 input.classList.remove('border-rose-400', 'bg-rose-50');
-                input.classList.add('border-emerald-500', 'bg-emerald-50');
             } else {
-                input.classList.remove('border-emerald-500', 'bg-emerald-50');
                 input.classList.add('border-rose-400', 'bg-rose-50');
                 isCorrect = false;
             }
@@ -142,12 +167,47 @@
 
         const feedback = document.getElementById('feedback');
         if (isCorrect) {
-            feedback.innerText = "✨ HERVORRAGEND! DIE GLEICHUNG IST AUSGEGLICHEN.";
-            feedback.className = "mt-8 text-center font-bold text-emerald-600 animate-bounce";
+            if (firstTry) {
+                solvedCorrectly++;
+                totalTasks++;
+                updateScore();
+            } else if (feedback.innerText === "") { 
+                // Falls es erst beim zweiten Mal stimmt, zählt es nur als bearbeitete Aufgabe
+                totalTasks++;
+                updateScore();
+            }
+            
+            feedback.innerText = "RICHTIG!";
+            feedback.className = "mt-6 text-center font-bold text-emerald-600";
+            showCompactVersion();
         } else {
-            feedback.innerText = "DIE MASSENBILANZ STIMMT NOCH NICHT...";
-            feedback.className = "mt-8 text-center font-bold text-rose-500";
+            feedback.innerText = "NOCH NICHT GANZ...";
+            feedback.className = "mt-6 text-center font-bold text-rose-500";
+            firstTry = false;
         }
+    }
+
+    function updateScore() {
+        const percent = totalTasks > 0 ? Math.round((solvedCorrectly / totalTasks) * 100) : 0;
+        document.getElementById('score-display').innerText = `Score: ${solvedCorrectly} / ${totalTasks} (${percent}%)`;
+    }
+
+    function showCompactVersion() {
+        const parts = currentTask.equation.split(/ \+ | -> /);
+        const operators = currentTask.equation.match(/ \+ | -> /g);
+        let compactStr = "";
+
+        parts.forEach((p, i) => {
+            const coeff = currentTask.solution[i];
+            compactStr += (coeff > 1 ? coeff + " " : "") + format(p);
+            if (operators && operators[i]) {
+                compactStr += operators[i].trim() === '->' ? " → " : " + ";
+            }
+        });
+
+        const resDiv = document.getElementById('compact-result');
+        resDiv.innerHTML = compactStr;
+        resDiv.classList.remove('opacity-0');
     }
 
     init();
