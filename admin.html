@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin-Panel | Stöchiometrie-Meister</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-100 p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
+        
+        <div class="bg-slate-900 p-6 text-white flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold tracking-tight uppercase">🛠 Gleichungs-Editor</h1>
+                <p class="text-xs text-slate-400">Content Management für Stöchiometrie-Meister</p>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="addNewRow()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg text-xs font-bold transition-all">
+                    + NEUE REAKTION
+                </button>
+                <button onclick="exportJSON()" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-xs font-bold transition-all shadow-lg">
+                    JSON EXPORTIEREN
+                </button>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead class="bg-slate-50 border-b border-slate-200 text-slate-500 text-[10px] uppercase font-bold tracking-widest">
+                    <tr>
+                        <th class="p-4">ID</th>
+                        <th class="p-4">Name / Beschreibung</th>
+                        <th class="p-4">Gleichung (Struktur)</th>
+                        <th class="p-4">Lösung (Koeffizienten)</th>
+                        <th class="p-4">Stufe</th>
+                        <th class="p-4">Aktiv</th>
+                        <th class="p-4">Aktion</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body" class="text-sm">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <p class="text-center text-slate-400 text-[10px] mt-8 uppercase tracking-widest">
+        Nach dem Exportieren die heruntergeladene Datei einfach als "equations.json" im GitHub-Repo ersetzen.
+    </p>
+
+<script>
+    let equations = [];
+
+    // 1. Daten laden
+    async function loadData() {
+        try {
+            const response = await fetch('equations.json');
+            equations = await response.json();
+            renderTable();
+        } catch (e) {
+            alert("Konnte equations.json nicht finden. Starte mit leerer Liste.");
+            equations = [];
+            renderTable();
+        }
+    }
+
+    // 2. Tabelle rendern
+    function renderTable() {
+        const body = document.getElementById('table-body');
+        body.innerHTML = "";
+
+        equations.forEach((eq, idx) => {
+            const row = document.createElement('tr');
+            row.className = "border-b border-slate-100 hover:bg-slate-50 transition-all";
+            
+            row.innerHTML = `
+                <td class="p-2 text-slate-400 text-xs font-mono">${eq.id}</td>
+                <td class="p-2"><input type="text" value="${eq.name}" onchange="updateValue(${idx}, 'name', this.value)" class="w-full p-2 border border-slate-200 rounded text-xs focus:border-blue-500 outline-none"></td>
+                <td class="p-2"><input type="text" value="${eq.equation}" onchange="updateValue(${idx}, 'equation', this.value)" class="w-full p-2 border border-slate-200 rounded font-mono text-xs"></td>
+                <td class="p-2"><input type="text" value="${eq.solution.join(',')}" onchange="updateSolution(${idx}, this.value)" class="w-full p-2 border border-slate-200 rounded font-mono text-xs" placeholder="z.B. 2,1,2"></td>
+                <td class="p-2">
+                    <select onchange="updateValue(${idx}, 'difficulty', this.value)" class="p-2 border border-slate-200 rounded text-xs bg-white">
+                        <option value="SEK1" ${eq.difficulty === 'SEK1' ? 'selected' : ''}>SEK 1</option>
+                        <option value="SEK2" ${eq.difficulty === 'SEK2' ? 'selected' : ''}>SEK 2</option>
+                    </select>
+                </td>
+                <td class="p-2 text-center">
+                    <input type="checkbox" ${eq.selected ? 'checked' : ''} onchange="updateValue(${idx}, 'selected', this.checked)" class="w-4 h-4 accent-emerald-500">
+                </td>
+                <td class="p-2">
+                    <button onclick="deleteRow(${idx})" class="text-rose-400 hover:text-rose-600 p-2">🗑</button>
+                </td>
+            `;
+            body.appendChild(row);
+        });
+    }
+
+    // 3. Updates verarbeiten
+    function updateValue(idx, key, val) {
+        equations[idx][key] = val;
+    }
+
+    function updateSolution(idx, val) {
+        equations[idx].solution = val.split(',').map(n => parseInt(n.trim()));
+    }
+
+    function deleteRow(idx) {
+        if(confirm("Diese Gleichung wirklich löschen?")) {
+            equations.splice(idx, 1);
+            renderTable();
+        }
+    }
+
+    function addNewRow() {
+        const newId = equations.length > 0 ? Math.max(...equations.map(e => e.id)) + 1 : 1;
+        equations.push({
+            id: newId,
+            name: "Neue Reaktion",
+            equation: "A + B -> C",
+            solution: [1, 1, 1],
+            difficulty: "SEK1",
+            selected: true
+        });
+        renderTable();
+    }
+
+    // 4. Export-Funktion
+    function exportJSON() {
+        const dataStr = JSON.stringify(equations, null, 2);
+        const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+        
+        const exportFileDefaultName = 'equations.json';
+        const linkElement = document.createElement('a');
+        linkElement.setAttribute('href', dataUri);
+        linkElement.setAttribute('download', exportFileDefaultName);
+        linkElement.click();
+    }
+
+    loadData();
+</script>
+</body>
+</html>
