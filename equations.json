@@ -1,0 +1,1415 @@
+[
+  {
+    "id": 1,
+    "name": "Knallgasreaktion",
+    "equation": "H2 + O2 -> H2O",
+    "solution": [
+      2,
+      1,
+      2
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 2,
+    "name": "Verbrennung von Schwefel",
+    "equation": "S8 + O2 -> SO3",
+    "solution": [
+      1,
+      12,
+      8
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 3,
+    "name": "Zersetzung von Quecksilberoxid",
+    "equation": "HgO -> Hg + O2",
+    "solution": [
+      2,
+      2,
+      1
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 4,
+    "name": "Zink in Salzsäure",
+    "equation": "Zn + HCl -> ZnCl2 + H2",
+    "solution": [
+      1,
+      2,
+      1,
+      1
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 5,
+    "name": "Natrium in Wasser",
+    "equation": "Na + H2O -> NaOH + H2",
+    "solution": [
+      2,
+      2,
+      2,
+      1
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 6,
+    "name": "Terpentin-Verbrennung (in Chlor)",
+    "equation": "C10H16 + Cl2 -> C + HCl",
+    "solution": [
+      1,
+      8,
+      10,
+      16
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 7,
+    "name": "Silan-Verbrennung",
+    "equation": "Si2H3 + O2 -> SiO2 + H2O",
+    "solution": [
+      4,
+      11,
+      8,
+      6
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 8,
+    "name": "Oxidation von Eisen",
+    "equation": "Fe + O2 -> Fe2O3",
+    "solution": [
+      4,
+      3,
+      2
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 9,
+    "name": "Verbrennung von Heptan",
+    "equation": "C7H6O2 + O2 -> CO2 + H2O",
+    "solution": [
+      2,
+      15,
+      14,
+      6
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 10,
+    "name": "Rösten von Pyrit (Eisendisulfid)",
+    "equation": "FeS2 + O2 -> Fe2O3 + SO2",
+    "solution": [
+      4,
+      11,
+      2,
+      8
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 11,
+    "name": "Reduktion von Eisenoxid",
+    "equation": "Fe2O3 + H2 -> Fe + H2O",
+    "solution": [
+      1,
+      3,
+      2,
+      3
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 12,
+    "name": "Synthese von Kaliumbromid",
+    "equation": "K + Br2 -> KBr",
+    "solution": [
+      2,
+      1,
+      2
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 13,
+    "name": "Verbrennung von Ethin",
+    "equation": "C2H2 + O2 -> CO2 + H2O",
+    "solution": [
+      2,
+      5,
+      4,
+      2
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 14,
+    "name": "Zerfall von Wasserstoffperoxid",
+    "equation": "H2O2 -> H2O + O2",
+    "solution": [
+      2,
+      2,
+      1
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 15,
+    "name": "Verbrennung von Heptan (Variante)",
+    "equation": "C7H16 + O2 -> CO2 + H2O",
+    "solution": [
+      1,
+      11,
+      7,
+      8
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 16,
+    "name": "Flusssäure greift Glas an",
+    "equation": "SiO2 + HF -> SiF4 + H2O",
+    "solution": [
+      1,
+      4,
+      1,
+      2
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 17,
+    "name": "Thermische Zersetzung (KClO3)",
+    "equation": "KClO3 -> KCl + O2",
+    "solution": [
+      2,
+      2,
+      3
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 18,
+    "name": "Disproportionierung (Kaliumchlorat)",
+    "equation": "KClO3 -> KClO4 + KCl",
+    "solution": [
+      4,
+      3,
+      1
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 19,
+    "name": "Phosphorpentoxid & Wasser",
+    "equation": "P4O10 + H2O -> H3PO4",
+    "solution": [
+      1,
+      6,
+      4
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 20,
+    "name": "Antimon-Oxidation",
+    "equation": "Sb + O2 -> Sb4O6",
+    "solution": [
+      4,
+      3,
+      1
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 21,
+    "name": "Verbrennung von Propan",
+    "equation": "C3H8 + O2 -> CO2 + H2O",
+    "solution": [
+      1,
+      5,
+      3,
+      4
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 22,
+    "name": "Zersetzung von Kaliumnitrat",
+    "equation": "KNO3 -> KNO2 + O2",
+    "solution": [
+      2,
+      2,
+      1
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 23,
+    "name": "Phosphorpentachlorid-Hydrolyse",
+    "equation": "PCl5 + H2O -> HCl + H3PO4",
+    "solution": [
+      1,
+      4,
+      5,
+      1
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 24,
+    "name": "Schwefelwasserstoff-Oxidation",
+    "equation": "H2S + Cl2 -> S8 + HCl",
+    "solution": [
+      8,
+      8,
+      1,
+      16
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 25,
+    "name": "Eisen & Wasserdampf",
+    "equation": "Fe + H2O -> Fe3O4 + H2",
+    "solution": [
+      3,
+      4,
+      1,
+      4
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 26,
+    "name": "Ammoniak-Synthese",
+    "equation": "N2 + H2 -> NH3",
+    "solution": [
+      1,
+      3,
+      2
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 27,
+    "name": "Synthese von Lachgas",
+    "equation": "N2 + O2 -> N2O",
+    "solution": [
+      2,
+      1,
+      2
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 28,
+    "name": "Photosynthese",
+    "equation": "CO2 + H2O -> C6H12O6 + O2",
+    "solution": [
+      6,
+      6,
+      1,
+      6
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 29,
+    "name": "Siliciumtetrachlorid-Hydrolyse",
+    "equation": "SiCl4 + H2O -> H4SiO4 + HCl",
+    "solution": [
+      1,
+      4,
+      1,
+      4
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 30,
+    "name": "Entwässerung von Phosphorsäure",
+    "equation": "H3PO4 -> H4P2O7 + H2O",
+    "solution": [
+      2,
+      1,
+      1
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 31,
+    "name": "Synthese von Harnstoff",
+    "equation": "CO2 + NH3 -> OC(NH2)2 + H2O",
+    "solution": [
+      1,
+      2,
+      1,
+      1
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 32,
+    "name": "Aluminiumhydroxid & Schwefelsäure",
+    "equation": "Al(OH)3 + H2SO4 -> Al2(SO4)3 + H2O",
+    "solution": [
+      2,
+      3,
+      1,
+      6
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 33,
+    "name": "Eisen(III)-sulfat & Kalilauge",
+    "equation": "Fe2(SO4)3 + KOH -> K2SO4 + Fe(OH)3",
+    "solution": [
+      1,
+      6,
+      3,
+      2
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 34,
+    "name": "Reduktion von Schwefelsäure",
+    "equation": "H2SO4 + HI -> H2S + I2 + H2O",
+    "solution": [
+      1,
+      8,
+      1,
+      4,
+      4
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 35,
+    "name": "Thermit-Reaktion",
+    "equation": "Al + FeO -> Al2O3 + Fe",
+    "solution": [
+      2,
+      3,
+      1,
+      3
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 36,
+    "name": "Soda & Salzsäure",
+    "equation": "Na2CO3 + HCl -> NaCl + H2O + CO2",
+    "solution": [
+      1,
+      2,
+      2,
+      1,
+      1
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 37,
+    "name": "Verbrennung von weißem Phosphor",
+    "equation": "P4 + O2 -> P2O5",
+    "solution": [
+      1,
+      5,
+      2
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 38,
+    "name": "Aluminium & Salzsäure",
+    "equation": "Al + HCl -> AlCl3 + H2",
+    "solution": [
+      2,
+      6,
+      2,
+      3
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 39,
+    "name": "Neutralisation (Phosphorsäure)",
+    "equation": "H3PO4 + NaOH -> Na3PO4 + H2O",
+    "solution": [
+      1,
+      3,
+      1,
+      3
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 40,
+    "name": "Wassergas-Reaktion",
+    "equation": "C + H2O -> CO + H2",
+    "solution": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 41,
+    "name": "Reduktion von Magnetit",
+    "equation": "Fe3O4 + H2 -> Fe + H2O",
+    "solution": [
+      1,
+      4,
+      3,
+      4
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 42,
+    "name": "Kohlenmonoxid-Oxidation",
+    "equation": "CO + O2 -> CO2",
+    "solution": [
+      2,
+      1,
+      2
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 43,
+    "name": "Magnesium-Verbrennung",
+    "equation": "Mg + O2 -> MgO",
+    "solution": [
+      2,
+      1,
+      2
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 44,
+    "name": "Schwefeldioxid-Oxidation (Kontaktverfahren)",
+    "equation": "SO2 + O2 -> SO3",
+    "solution": [
+      2,
+      1,
+      2
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 45,
+    "name": "Salpetersäure-Bildung",
+    "equation": "N2O5 + H2O -> HNO3",
+    "solution": [
+      1,
+      1,
+      2
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 46,
+    "name": "Synthese von Aluminiumsulfid",
+    "equation": "Al + S -> Al2S3",
+    "solution": [
+      2,
+      3,
+      1
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 47,
+    "name": "Lithiumoxid & Wasser",
+    "equation": "Li2O + H2O -> LiOH",
+    "solution": [
+      1,
+      1,
+      2
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 48,
+    "name": "Carbid-Verfahren (Acetylen-Bildung)",
+    "equation": "CaC2 + H2O -> C2H2 + Ca(OH)2",
+    "solution": [
+      1,
+      2,
+      1,
+      1
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 49,
+    "name": "Indirekte Reduktion (Hochofen)",
+    "equation": "Fe2O3 + CO -> Fe + CO2",
+    "solution": [
+      1,
+      3,
+      2,
+      3
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 50,
+    "name": "Ostwald-Verfahren (Ammoniak-Verbrennung)",
+    "equation": "NH3 + O2 -> NO + H2O",
+    "solution": [
+      4,
+      5,
+      4,
+      6
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 51,
+    "name": "Kupfer & Salpetersäure (konz.)",
+    "equation": "Cu + HNO3 -> Cu(NO3)2 + NO2 + H2O",
+    "solution": [
+      1,
+      4,
+      1,
+      2,
+      2
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 52,
+    "name": "Chlor-Entwicklung im Labor",
+    "equation": "KMnO4 + HCl -> KCl + MnCl2 + Cl2 + H2O",
+    "solution": [
+      2,
+      16,
+      2,
+      2,
+      5,
+      8
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 53,
+    "name": "Synthese von Tetraethylblei",
+    "equation": "Pb + Na + C2H5Cl -> Pb(C2H5)4 + NaCl",
+    "solution": [
+      1,
+      4,
+      4,
+      1,
+      4
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 54,
+    "name": "Phosphor-Erzeugung",
+    "equation": "Ca3(PO4)2 + C + SiO2 -> CaSiO3 + P4 + CO",
+    "solution": [
+      2,
+      10,
+      6,
+      6,
+      1,
+      10
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 55,
+    "name": "Blei(II)-oxid Reduktion",
+    "equation": "PbO + C -> Pb + CO2",
+    "solution": [
+      2,
+      1,
+      2,
+      1
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 56,
+    "name": "Zinkoxid & Kohlenstoff",
+    "equation": "ZnO + C -> Zn + CO",
+    "solution": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 57,
+    "name": "Ammoniak & Stickstoffmonoxid",
+    "equation": "NH3 + NO -> N2 + H2O",
+    "solution": [
+      4,
+      6,
+      5,
+      6
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 58,
+    "name": "Kupferoxid & Ammoniak",
+    "equation": "CuO + NH3 -> Cu + N2 + H2O",
+    "solution": [
+      3,
+      2,
+      3,
+      1,
+      3
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 59,
+    "name": "Direkte Reduktion (Hochofen)",
+    "equation": "Fe2O3 + C -> CO + Fe",
+    "solution": [
+      1,
+      3,
+      3,
+      2
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 60,
+    "name": "Calciumphosphat & Schwefelsäure",
+    "equation": "Ca3(PO4)2 + H2SO4 -> CaSO4 + H3PO4",
+    "solution": [
+      1,
+      3,
+      3,
+      2
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 61,
+    "name": "Aluminium & Eisen(III)-oxid",
+    "equation": "Al + Fe2O3 -> Al2O3 + Fe",
+    "solution": [
+      2,
+      1,
+      1,
+      2
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 62,
+    "name": "Mangan(IV)-oxid & Salzsäure",
+    "equation": "MnO2 + HCl -> MnCl2 + Cl2 + H2O",
+    "solution": [
+      1,
+      4,
+      1,
+      1,
+      2
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 63,
+    "name": "Bariumchlorid & Natriumsulfat",
+    "equation": "BaCl2 + Na2SO4 -> BaSO4 + NaCl",
+    "solution": [
+      1,
+      1,
+      1,
+      2
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 64,
+    "name": "Natriumcarbonat & Salpetersäure",
+    "equation": "Na2CO3 + HNO3 -> NaNO3 + H2O + CO2",
+    "solution": [
+      1,
+      2,
+      2,
+      1,
+      1
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 65,
+    "name": "Kupfer(II)-oxid & Wasserstoff",
+    "equation": "CuO + H2 -> Cu + H2O",
+    "solution": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 66,
+    "name": "Vanadiumpentoxid & Salzsäure",
+    "equation": "V2O5 + HCl -> VOCl3 + H2O",
+    "solution": [
+      1,
+      6,
+      2,
+      3
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 67,
+    "name": "Bleisulfid-Röstung",
+    "equation": "PbS + O2 -> PbO + SO2",
+    "solution": [
+      2,
+      3,
+      2,
+      2
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 68,
+    "name": "Stickstoffdioxid & Wasser",
+    "equation": "NO2 + H2O -> HNO3 + NO",
+    "solution": [
+      3,
+      1,
+      2,
+      1
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 69,
+    "name": "Natriumthiosulfat & Salzsäure",
+    "equation": "Na2S2O3 + HCl -> NaCl + H2O + SO2 + S",
+    "solution": [
+      1,
+      2,
+      2,
+      1,
+      1,
+      1
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 70,
+    "name": "Silbernitrat & Magnesiumchlorid",
+    "equation": "AgNO3 + MgCl2 -> AgCl + Mg(NO3)2",
+    "solution": [
+      2,
+      1,
+      2,
+      1
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 71,
+    "name": "Calciumoxid & Salzsäure",
+    "equation": "CaO + HCl -> CaCl2 + H2O",
+    "solution": [
+      1,
+      2,
+      1,
+      1
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 72,
+    "name": "Aluminiumoxid & Natronlauge",
+    "equation": "Al2O3 + NaOH + H2O -> NaAl(OH)4",
+    "solution": [
+      1,
+      2,
+      3,
+      2
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 73,
+    "name": "Zink & Natronlauge (komplex)",
+    "equation": "Zn + NaOH + H2O -> Na2[Zn(OH)4] + H2",
+    "solution": [
+      1,
+      2,
+      2,
+      1,
+      1
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 74,
+    "name": "Siliciumdioxid & Natriumcarbonat",
+    "equation": "SiO2 + Na2CO3 -> Na2SiO3 + CO2",
+    "solution": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 75,
+    "name": "Verbrennung von Methan (Erdgas)",
+    "equation": "CH4 + O2 -> CO2 + H2O",
+    "solution": [
+      1,
+      2,
+      1,
+      2
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 76,
+    "name": "Verbrennung von Ethan",
+    "equation": "C2H6 + O2 -> CO2 + H2O",
+    "solution": [
+      2,
+      7,
+      4,
+      6
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 77,
+    "name": "Verbrennung von Butan (Feuerzeuggas)",
+    "equation": "C4H10 + O2 -> CO2 + H2O",
+    "solution": [
+      2,
+      13,
+      8,
+      10
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 78,
+    "name": "Verbrennung von Octan (Benzin-Komponente)",
+    "equation": "C8H18 + O2 -> CO2 + H2O",
+    "solution": [
+      2,
+      25,
+      16,
+      18
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 79,
+    "name": "Verbrennung von Methanol",
+    "equation": "CH3OH + O2 -> CO2 + H2O",
+    "solution": [
+      2,
+      3,
+      2,
+      4
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 80,
+    "name": "Verbrennung von Ethanol (Spiritus)",
+    "equation": "C2H5OH + O2 -> CO2 + H2O",
+    "solution": [
+      1,
+      3,
+      2,
+      3
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 81,
+    "name": "Vulkanversuch (Ammoniumdichromat)",
+    "equation": "(NH4)2Cr2O7 -> N2 + H2O + Cr2O3",
+    "solution": [
+      1,
+      1,
+      4,
+      1
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 82,
+    "name": "Zersetzung von Silberoxid",
+    "equation": "Ag2O -> Ag + O2",
+    "solution": [
+      2,
+      4,
+      1
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 83,
+    "name": "Bariumoxid & Wasser",
+    "equation": "BaO + H2O -> Ba(OH)2",
+    "solution": [
+      1,
+      1,
+      1
+    ],
+    "difficulty": "SEK1",
+    "selected": false
+  },
+  {
+    "id": 84,
+    "name": "Calciumhydroxid & Kohlendioxid (Kalkwasserprobe)",
+    "equation": "Ca(OH)2 + CO2 -> CaCO3 + H2O",
+    "solution": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 85,
+    "name": "Zersetzung von Kalkstein (Kalkbrennen)",
+    "equation": "CaCO3 -> CaO + CO2",
+    "solution": [
+      1,
+      1,
+      1
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 86,
+    "name": "Salzsäure & Magnesium",
+    "equation": "Mg + HCl -> MgCl2 + H2",
+    "solution": [
+      1,
+      2,
+      1,
+      1
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 87,
+    "name": "Aluminium & Brom",
+    "equation": "Al + Br2 -> AlBr3",
+    "solution": [
+      2,
+      3,
+      2
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 88,
+    "name": "Schwefelwasserstoff-Verbrennung",
+    "equation": "H2S + O2 -> SO2 + H2O",
+    "solution": [
+      2,
+      3,
+      2,
+      2
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 89,
+    "name": "Halogenierung (Spezialfall)",
+    "equation": "C4H10 + Cl2 + O2 -> CO2 + CCl4 + H2O",
+    "solution": [
+      2,
+      2,
+      12,
+      7,
+      1,
+      10
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 90,
+    "name": "Ammoniak & Schwefelsäure",
+    "equation": "NH3 + H2SO4 -> (NH4)2SO4",
+    "solution": [
+      2,
+      1,
+      1
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 91,
+    "name": "Zersetzung von Kupferhydroxid",
+    "equation": "Cu(OH)2 -> CuO + H2O",
+    "solution": [
+      1,
+      1,
+      1
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 92,
+    "name": "Eisen(III)-chlorid & Silbernitrat",
+    "equation": "FeCl3 + AgNO3 -> AgCl + Fe(NO3)3",
+    "solution": [
+      1,
+      3,
+      3,
+      1
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 93,
+    "name": "Calcium & Stickstoff",
+    "equation": "Ca + N2 -> Ca3N2",
+    "solution": [
+      3,
+      1,
+      1
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 94,
+    "name": "Ethanol-Verbrennung (unvollständig)",
+    "equation": "C2H5OH + O2 -> CO + H2O",
+    "solution": [
+      1,
+      2,
+      2,
+      3
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 95,
+    "name": "Natriumoxid & Kohlendioxid",
+    "equation": "Na2O + CO2 -> Na2CO3",
+    "solution": [
+      1,
+      1,
+      1
+    ],
+    "difficulty": "SEK1",
+    "selected": false
+  },
+  {
+    "id": 96,
+    "name": "Lachgas-Erzeugung",
+    "equation": "NH4NO3 -> N2O + H2O",
+    "solution": [
+      1,
+      1,
+      2
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 97,
+    "name": "Kupfer & Schwefel",
+    "equation": "Cu + S -> Cu2S",
+    "solution": [
+      2,
+      1,
+      1
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 98,
+    "name": "Bariumchlorid & Schwefelsäure",
+    "equation": "BaCl2 + H2SO4 -> BaSO4 + HCl",
+    "solution": [
+      1,
+      1,
+      1,
+      2
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 99,
+    "name": "Magnesiumnitrid-Hydrolyse",
+    "equation": "Mg3N2 + H2O -> Mg(OH)2 + NH3",
+    "solution": [
+      1,
+      6,
+      3,
+      2
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 100,
+    "name": "Blei(II)-sulfid & Wasserstoffperoxid",
+    "equation": "PbS + H2O2 -> PbSO4 + H2O",
+    "solution": [
+      1,
+      4,
+      1,
+      4
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 101,
+    "name": "Natriumchlorid & Schwefelsäure",
+    "equation": "NaCl + H2SO4 -> Na2SO4 + HCl",
+    "solution": [
+      2,
+      1,
+      1,
+      2
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 102,
+    "name": "Verbrennung von Benzol",
+    "equation": "C6H6 + O2 -> CO2 + H2O",
+    "solution": [
+      2,
+      15,
+      12,
+      6
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  },
+  {
+    "id": 103,
+    "name": "Zersetzung von Gold(III)-chlorid",
+    "equation": "AuCl3 -> Au + Cl2",
+    "solution": [
+      2,
+      2,
+      3
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 104,
+    "name": "Aluminiumchlorid-Synthese",
+    "equation": "Al + Cl2 -> AlCl3",
+    "solution": [
+      2,
+      3,
+      2
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 105,
+    "name": "Ethen-Verbrennung",
+    "equation": "C2H4 + O2 -> CO2 + H2O",
+    "solution": [
+      1,
+      3,
+      2,
+      2
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 106,
+    "name": "Zersetzung von Antimon(III)-sulfid",
+    "equation": "Sb2S3 + O2 -> Sb2O3 + SO2",
+    "solution": [
+      2,
+      9,
+      2,
+      6
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 107,
+    "name": "Backpulver-Reaktion (Natron-Thermolyse)",
+    "equation": "NaHCO3 -> Na2CO3 + CO2 + H2O",
+    "solution": [
+      2,
+      1,
+      1,
+      1
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 108,
+    "name": "Neutralisation (Schwefelsäure & Natronlauge)",
+    "equation": "H2SO4 + NaOH -> Na2SO4 + H2O",
+    "solution": [
+      1,
+      2,
+      1,
+      2
+    ],
+    "difficulty": "SEK1",
+    "selected": true
+  },
+  {
+    "id": 109,
+    "name": "Calciumphosphid-Reaktion",
+    "equation": "Ca3P2 + H2O -> Ca(OH)2 + PH3",
+    "solution": [
+      1,
+      6,
+      3,
+      2
+    ],
+    "difficulty": "SEK2",
+    "selected": false
+  },
+  {
+    "id": 110,
+    "name": "Verbrennung von Schwefelkohlenstoff",
+    "equation": "CS2 + O2 -> CO2 + SO2",
+    "solution": [
+      1,
+      3,
+      1,
+      2
+    ],
+    "difficulty": "SEK2",
+    "selected": true
+  }
+]
